@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "GmarketSans";
+  src: url('/font/TTF/GmarketSansTTFBold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url('/font/TTF/GmarketSansTTFMedium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url('/font/TTF/GmarketSansTTFLight.ttf') format('truetype');
+  font-weight: 300;
+}
+
+
+* {
+  margin: 0;                
+  padding: 0;
+  user-select: none;                
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "GmarketSans", sans-serif;
+}
+
+.hero {
+  position: relative;                                       
+  width: 100%;
+  height: 100vh;                                          
+  background-image: url('../assets/backgroun_Banner_end.png'); 
+  background-size: cover;                                  
+  background-position: center;                             
+  display: flex;                                           
+  align-items: flex-start;                                  
+  justify-content: center;                                 
+}
+
+
+.hero-content {
+  position: relative;        
+  z-index: 2;                 
+  text-align: center;       
+  display: flex;             
+  flex-direction: column;    
+  align-items: center;       
+  width: 100%;              
+  margin-top: 40.1vh;        
+}
+
+.hero-title {
+  color: #F5F5F5;             
+  text-align: center;        
+  font-family: "GmarketSans", sans-serif; 
+  font-size: 4.69vw;          
+  font-style: normal;
+  font-weight: 700;           
+  line-height: normal;
+}
+
+.hero-subtitle {
+  color: #F5F5F5;            
+  text-align: center;        
+  font-family: "GmarketSans", sans-serif; 
+  font-size: 4.17vw;          
+  font-style: normal;
+  font-weight: 500;          
+  line-height: normal;
+  margin-top: 1.7vh;
+}
+
+.hero-btn {
+  display: flex;
+  width: 11.46vw;
+  height: 6.48vh;
+  padding: 1.30vh 2.66vw;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6.9vh;
+  border-radius: 1.82vw;
+  /* background: #0B3C30; */
+  background: #139E7C;
+  box-shadow: 0 0.37vh 0.37vh 0 rgba(0, 0, 0, 0.25);
+  color: #FFF;
+  font-family: "GmarketSans", sans-serif;
+  font-size: 1.25vw;                                 
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-btn:hover {
+  background: #0f5040; 
+  box-shadow: 0 0 20px rgba(11, 60, 48, 0.8); 
+  cursor: pointer;
+}

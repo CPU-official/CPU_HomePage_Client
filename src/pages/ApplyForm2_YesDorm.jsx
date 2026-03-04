@@ -1,0 +1,212 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components';
+
+const Page = styled.div`
+  background-color: #000;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 48px;
+  position: relative;
+  font-family: 'Pretendard', sans-serif;
+`;
+
+const BackButton = styled.button`
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+const FormContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const Label = styled.label`
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+const Required = styled.span`
+  color: #ff7c7c;
+  font-size: 18px;
+  margin-left: 2px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 52px;
+  background-color: #000;
+  border: 1.5px solid ${({ $filled }) => ($filled ? '#19d0a3' : '#555')};
+  border-radius: 8px;
+  padding: 0 20px;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: #555;
+  }
+
+  &:focus {
+    border-color: #19d0a3;
+  }
+`;
+
+const ChoiceGroup = styled.div`
+  display: flex;
+  gap: 12px;
+  width: 100%;
+`;
+
+const ChoiceButton = styled.button`
+  flex: 1;
+  height: 52px;
+  background-color: ${({ $selected }) => ($selected ? '#19d0a3' : '#000')};
+  border: 1.5px solid ${({ $selected }) => ($selected ? '#19d0a3' : '#555')};
+  border-radius: 8px;
+  color: ${({ $selected }) => ($selected ? '#000' : '#757575')};
+  font-size: 15px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+  &:hover {
+    border-color: #19d0a3;
+    color: ${({ $selected }) => ($selected ? '#000' : '#fff')};
+  }
+`;
+
+const NextButton = styled.button`
+  width: 100%;
+  max-width: 800px;
+  height: 56px;
+  margin-top: 48px;
+  background-color: ${({ $active }) => ($active ? '#19d0a3' : '#757575')};
+  border: none;
+  border-radius: 8px;
+  color: ${({ $active }) => ($active ? '#000' : '#fff')};
+  font-size: 18px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  cursor: ${({ $active }) => ($active ? 'pointer' : 'default')};
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: ${({ $active }) => ($active ? '#14b991' : '#757575')};
+  }
+`;
+
+export default function ApplyForm2_YesDorm() {
+  const [form, setForm] = useState({
+    room: '',
+    reason: '',
+    ability: '',
+    role: '',
+  });
+
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const isAllFilled = !!form.room && !!form.reason && !!form.ability && !!form.role;
+
+  
+
+  return (
+    <Page>
+      <BackButton onClick={() => navigate(-1)} aria-label="뒤로가기">
+        &#8249;
+      </BackButton>
+
+      <FormContainer>
+        <Field>
+          <Label>호실<Required>*</Required></Label>
+          <Input
+            type="text"
+            name="room"
+            value={form.room}
+            onChange={handleChange}
+            placeholder="호실을 입력해 주세요"
+            $filled={!!form.room}
+          />
+        </Field>
+
+        <Field>
+          <Label>지원동기<Required>*</Required></Label>
+          <Input
+            type="text"
+            name="reason"
+            value={form.reason}
+            onChange={handleChange}
+            placeholder="지원동기를 입력해 주세요"
+            $filled={!!form.reason}
+          />
+        </Field>
+
+        <Field>
+          <Label>나의 장단점<Required>*</Required></Label>
+          <Input
+            type="text"
+            name="ability"
+            value={form.ability}
+            onChange={handleChange}
+            placeholder="나의 장단점을 입력해 주세요"
+            $filled={!!form.ability}
+          />
+        </Field>
+
+        <Field>
+          <Label>CPU에 들어온다면, 어떤 역할을 맡을 것인가요?*<Required>*</Required></Label>
+          <Input
+            type="text"
+            name="role"
+            value={form.role}
+            onChange={handleChange}
+            placeholder="CPU에 들어온다면, 어떤 역할을 맡을 것인가요?"
+            $filled={!!form.role}
+          />
+        </Field>
+
+        
+      </FormContainer>
+
+      <NextButton type="button" $active={isAllFilled} onClick={() => isAllFilled && navigate('/')}>지원하기</NextButton>
+    </Page>
+  );
+}
