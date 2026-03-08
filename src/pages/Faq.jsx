@@ -4,7 +4,7 @@ import Vector from '../assets/Vector.svg';
 import Vector1 from '../assets/Vector1.svg';
 
 const Layout = styled.div`
-  min-height: 100vh;
+  height: ${props => props.theme.vh(850)};
   background-color: #04001B;
   display: flex;
   flex-direction: column;
