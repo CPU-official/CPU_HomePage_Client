@@ -133,6 +133,7 @@ const MemberCard = styled.div`
   height: ${props => props.theme.vh(445)};
   margin-bottom: ${props => props.theme.vh(parseInt(marginList[props.$index]))};
   overflow: hidden;
+  border-radius: 8px;
   img {
     width: 100%;
     height: 100%;
