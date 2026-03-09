@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from "../components/Navbar.jsx";
+import bg from "../assets/member/member_bg.svg";
 
 // 이미지 임포트
 import team09_1 from "../assets/member/9기_전유림.svg";
@@ -41,7 +42,10 @@ const marginList = ["161px", "103px", "192px", "135px", "74px", "190px"];
 const Page = styled.div`
   background-color: #04001B;
   width: 100%;
-  min-height: 100vh;
+  height: ${props => props.theme.vh(1080)};
+  position: relative; 
+  overflow-x: hidden; 
+  overflow-y: hidden; 
 `;
 
 const Hero = styled.section`
@@ -49,6 +53,18 @@ const Hero = styled.section`
   flex-direction: column;
   align-items: center;
   padding-top: ${props => props.theme.vh(170)};
+  position: relative; /* 배경보다 위에 보이기 위해 명시 */
+  z-index: 2;
+`;
+
+const BackImg = styled.img`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+  width: ${props => props.theme.vw(2021)};
+  height: ${props => props.theme.vh(1686)};
+  z-index: 1; 
+  pointer-events: none; 
 `;
 
 const Title = styled.h1`
@@ -60,7 +76,7 @@ const Title = styled.h1`
 `;
 
 const ToggleContainer = styled.div`
-  display: flex;
+  display: flex;~
   position: relative;
   width: ${props => props.theme.vw(326)};
   height: ${props => props.theme.vh(56)};
@@ -102,6 +118,8 @@ const MemberSection = styled.section`
   justify-content: center;
   margin-top: ${props => props.theme.vh(80)};
   padding-bottom: ${props => props.theme.vh(100)};
+  position: relative;
+  z-index: 2; /* 배경보다 위에 위치 */
 `;
 
 const MemberGrid = styled.div`
@@ -205,6 +223,10 @@ export default function Member() {
   return (
     <Page>
       <Navbar $isVisible={isVisible} onScroll={onScroll} />
+      
+      {/* 배경 이미지를 콘텐츠 뒤에 배치 */}
+      <BackImg src={bg} alt="배경 이펙트" />
+
       <Hero>
         <Title>CPU의 부원을 소개합니다</Title>
         <ToggleContainer onClick={() => setActiveTab(prev => prev === '9기' ? '10기' : '9기')}>
@@ -213,7 +235,7 @@ export default function Member() {
           <Tab $active={activeTab === '10기'}>10기</Tab>
         </ToggleContainer>
       </Hero>
-
+      
       <MemberSection>
         <MemberGrid>
           {currentData.map((member, index) => (

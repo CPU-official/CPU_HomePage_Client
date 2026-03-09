@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import ScrollReveal from "../components/ScrollReveal";
 import lineImg from "../assets/awards/line_icon.png";
 import UserIcon from "../assets/icons/user_icon.svg";
 import AwardIcon from "../assets/icons/award_icon.svg";
@@ -247,8 +248,11 @@ const Awards = () => {
 
   return (
     <Container>
-      <Title>Awards</Title>
-      <Text>CPU의 수상내역입니다</Text>
+      <ScrollReveal $duration="1s">
+        <Title>Awards</Title>
+        <Text>CPU의 수상내역입니다</Text>
+      </ScrollReveal>
+      <ScrollReveal $delay="0.2s" $duration="1s">
       <Carousel ref={carouselRef}>
         <Slide $paused={!!hoveredAward}>
           <Group>
@@ -297,6 +301,7 @@ const Awards = () => {
           </Group>
         </Slide>
       </Carousel>
+      </ScrollReveal>
     </Container>
   );
 };

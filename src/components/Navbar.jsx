@@ -12,7 +12,7 @@ const NavContainer = styled.nav`
   height: ${props => props.theme.vh(120)};
   display: flex;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
   
   transition: transform 0.4s ease-in-out;
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(-200%)')};
