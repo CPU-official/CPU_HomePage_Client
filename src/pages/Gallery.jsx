@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import ScrollReveal from "../components/ScrollReveal";
 import banner1 from "../assets/gallery/glass.svg";
 import banner2 from "../assets/gallery/CPU_Banner2.svg";
 import banner3 from "../assets/gallery/CPU_Banner3.svg";
@@ -98,15 +99,18 @@ export default function Gallery() {
 
     return (
         <GalleryContainer>
-            <IntroSection>
-                <h3>코딩프로젝트반</h3>
-                <h1>CPU</h1>
-                <p>
-                    공모전, 프로젝트, IT쇼를 통해 함께 공부하고 나누며<br />
-                    세상에 없어서는 안 될 중요한 사람으로 성장하는 동아리입니다.
-                </p>
-            </IntroSection>
+            <ScrollReveal $duration="1s">
+                <IntroSection>
+                    <h3>코딩프로젝트반</h3>
+                    <h1>CPU</h1>
+                    <p>
+                        공모전, 프로젝트, IT쇼를 통해 함께 공부하고 나누며<br />
+                        세상에 없어서는 안 될 중요한 사람으로 성장하는 동아리입니다.
+                    </p>
+                </IntroSection>
+            </ScrollReveal>
 
+            <ScrollReveal $delay="0.2s" $duration="1s">
             <SliderWrapper>
                 <ImageRow direction="left">
                     {[...topRowImages, ...topRowImages].map((src, i) => (
@@ -120,6 +124,7 @@ export default function Gallery() {
                     ))}
                 </ImageRow>
             </SliderWrapper>
+            </ScrollReveal>
         </GalleryContainer>
     );
 }

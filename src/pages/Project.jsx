@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import ScrollReveal from "../components/ScrollReveal";
 
 import project_1  from '../assets/project/project_1.svg';
 import project_2  from '../assets/project/project_2.svg';
@@ -296,11 +297,14 @@ export default function Project() {
 
     return (
         <ProjectContainer>
-            <TitleArea>
-                <MainTitle>Project</MainTitle>
-                <SubTitle>{`CPU에서 기획부터 개발, 전시까지\n진행된 프로젝트 둘러보기`}</SubTitle>
-            </TitleArea>
+            <ScrollReveal $duration="1s">
+                <TitleArea>
+                    <MainTitle>Project</MainTitle>
+                    <SubTitle>{`CPU에서 기획부터 개발, 전시까지\n진행된 프로젝트 둘러보기`}</SubTitle>
+                </TitleArea>
+            </ScrollReveal>
 
+            <ScrollReveal $delay="0.15s" $duration="1s">
             <SliderRow>
                 <ArrowButton $dir="left" onClick={() => slide('prev')} aria-label="이전 프로젝트">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -322,7 +326,9 @@ export default function Project() {
                     </svg>
                 </ArrowButton>
             </SliderRow>
+            </ScrollReveal>
 
+            <ScrollReveal $delay="0.25s" $duration="0.8s">
             <DotsRow ref={dotsRowRef}>
                 <ActivePill $left={pillLeft} />
                 {projectImages.map((_, idx) => (
@@ -334,6 +340,7 @@ export default function Project() {
                     </DotWrapper>
                 ))}
             </DotsRow>
+            </ScrollReveal>
         </ProjectContainer>
     );
 }

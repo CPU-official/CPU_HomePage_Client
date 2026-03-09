@@ -7,7 +7,6 @@ import Gallery from './Gallery.jsx';
 import Project from './Project.jsx';
 import MainEnd from './MainEnd.jsx';
 import Awards from './Awards.jsx';
-// import PlasmaOverlay from '../components/PlasmaOverlay';
 import { AnimatedBg } from '../components/AnimatedBg.jsx';
 import Faq from './Faq.jsx';
 
@@ -75,21 +74,6 @@ const Main = () => {
           <HeroContent />
         </div>
       </MainHeroSection>
-      
-      {/* <MainHeroSection id="home">
-        <Navbar $isVisible={isVisible} onScroll={onScroll} />
-        <div className="heroWrapper">
-          <HeroContent />
-        </div>
-      </MainHeroSection> */}
-
-      {/* <MainHeroSection id="home">
-        <PlasmaOverlay />   
-        <Navbar $isVisible={isVisible} onScroll={onScroll} />
-        <div className="heroWrapper">
-          <HeroContent />
-        </div>
-      </MainHeroSection> */}
 
       <section id="about"></section>
       <section id="gallery">

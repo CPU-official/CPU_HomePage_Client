@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import ScrollReveal from '../components/ScrollReveal';
 import Vector from '../assets/Vector.svg';
 import Vector1 from '../assets/Vector1.svg';
 
@@ -159,11 +160,14 @@ const Faq = () => {
 
   return (
     <Layout>
-      <Header>
-        <MainTitle>FAQ</MainTitle>
-        <SubTitle>CPU에 대한 궁금증을 해소해드리겠습니다</SubTitle>
-      </Header>
+      <ScrollReveal $duration="1s">
+        <Header>
+          <MainTitle>FAQ</MainTitle>
+          <SubTitle>CPU에 대한 궁금증을 해소해드리겠습니다</SubTitle>
+        </Header>
+      </ScrollReveal>
 
+      <ScrollReveal $delay="0.15s" $duration="1s">
       <ListGroup>
         {faqData.map((faq, index) => (
           <FaqItem
@@ -175,6 +179,7 @@ const Faq = () => {
           />
         ))}
       </ListGroup>
+      </ScrollReveal>
     </Layout>
   );
 };

@@ -1,5 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const HeroTextContainer = styled.div`
+  opacity: 0;
+  animation: ${fadeInUp} ${props => props.$duration || '1.2s'} ease-out forwards;
+  animation-delay: ${props => props.$delay || '0s'};
+`;
 
 const HeroWrapper = styled.div`
   display: flex;
@@ -39,13 +56,18 @@ const SubDescription = styled.p`
 const HeroContent = () => {
   return (
     <HeroWrapper className="centerContent">
-      <Title>
-        <span>C</span>reative <span>P</span>erformance{"\n"}
-        with <span>U</span>.
-      </Title>
-      <SubDescription>
-        작은 아이디어가, 세상에 남을 결과가 되기까지 시도하는 사람들
-      </SubDescription>
+      <HeroTextContainer $delay="0s" $duration="1.2s">
+        <Title>
+          <span>C</span>reative <span>P</span>erformance{"\n"}
+          with <span>U</span>.
+        </Title>
+      </HeroTextContainer>
+
+      <HeroTextContainer $delay="0.5s" $duration="1s">
+        <SubDescription>
+          작은 아이디어가, 세상에 남을 결과가 되기까지 시도하는 사람들
+        </SubDescription>
+      </HeroTextContainer>
     </HeroWrapper>
   );
 };
